@@ -1,0 +1,40 @@
+button::after {
+  border: none;
+}
+
+.loadingDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 18rpx 0;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.loadingDiv .loadingImg {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.emptyDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 100rpx;
+}
+
+.emptyDiv .emptyImg {
+  display: block;
+  width: 70%;
+  height: auto;
+}

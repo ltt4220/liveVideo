@@ -1,0 +1,26 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/search/search",
+    "pages/login/index/index",
+    "pages/login/account/account",
+    "pages/login/sms/sms",
+    "pages/webView/webView",
+    "pages/goods/goods",
+    "pages/detail/detail",
+    "pages/playbackVideo/playbackVideo",
+    "pages/trailerDetail/trailerDetail",
+    "pages/liveDetail/liveDetail",
+    "pages/liveList/liveList"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "直播",
+    "navigationBarTextStyle":"black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  }
+}
