@@ -1,0 +1,134 @@
+/* components/popBot/popBox.wxss */
+
+.scan-container {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.mask {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+.scan-box {
+    background-color: white;
+    position: fixed;
+    border-top-left-radius: 14.04rpx;
+    border-top-right-radius: 14.04rpx;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    font-size: 34rpx;
+    color: #666;
+    text-align: left;
+    z-index: 11;
+    animation: myflash 0.3s linear both;
+}
+
+@keyframes myflash {
+    from {
+        height: 0;
+        bottom: -360rpx;
+    }
+    to {
+        height: 360rpx;
+        bottom: 0rpx;
+    }
+}
+
+.scan_head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 266rpx;
+    border-bottom: 20rpx solid #f6f6f6;
+    padding-bottom: 15rpx;
+    box-sizing: border-box;
+}
+
+.scan-createcards {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    font-size: 34rpx;
+    color: #666;
+}
+
+button::after {
+    border: none;
+}
+
+.scan-createcards image {
+    width: 108rpx;
+    height: 108rpx;
+}
+
+.scan_Top {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 266rpx;
+    border-bottom: 20rpx solid #f6f6f6;
+    padding-bottom: 15rpx;
+    box-sizing: border-box;
+}
+
+.scan_Top .text {
+    margin-bottom: 42rpx;
+    font-size: 38rpx;
+    font-family: ' MicrosoftYaHei-Bold, MicrosoftYaHei';
+    font-weight: bold;
+    color: #333333;
+}
+
+.scan_Top .box {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.scan_Top .box .quert {
+    width: 180rpx;
+    height: 90rpx;
+    border-radius: 45rpx;
+    border: 2rpx solid #CCCCCC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 34rpx;
+    font-family: 'MicrosoftYaHei';
+    color: #666666;
+}
+
+.scan_Top .box .active {
+    color: white;
+    background: #647EFF;
+}
+
+.scan_Top .box .quert:nth-of-type(2) {
+    margin: 0 30rpx;
+}
+
+.canle {
+    height: 94rpx;
+    line-height: 94rpx;
+    text-align: center;
+    width: 100%;
+}

@@ -1,0 +1,23 @@
+<!--components/popBot/popBox.wxml-->
+<view wx:if="{{showPopModal}}" class="scan-container" catchtap="closeHid">
+  <!-- <view class="mask" catchtouchmove="preventTouchMove"></view> -->
+  <view class="scan-box">
+    <view class="scan_head" wx-if="{{showModal && !showTab}}">
+      <button class="scan-createcards" open-type="share" hover-class="none" plain="{{false}}">
+        <image src="../../images/user/wechar.png"></image>
+        <text>分享给好友</text>
+      </button>
+      <button class="scan-mycards scan-createcards" catchtap="mycards">
+        <image src="../../images/user/photo.png"></image>
+        <text>生成海报</text>
+      </button>
+    </view>
+    <view class="scan_Top" wx:if="{{showPopModal && showTab}}" catchtap="showBox">
+      <view class="text">清晰度选择</view>
+      <view class="box">
+        <view class="quert {{item.active?'active':''}}" wx:for="{{lists}}" wx:for-item="item" wx:for-index="index" wx:key="index" catchtap="check" data-index="{{index}}">{{item.title}}</view>
+      </view>
+    </view>
+    <view class="canle">取消 </view>
+  </view>
+</view>

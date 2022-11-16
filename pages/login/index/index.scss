@@ -1,0 +1,173 @@
+$color: #647eff;
+
+.log-base{
+  padding: 110rpx 0 1rpx 0;
+  .logo {
+    width: 150rpx;
+    height: 150rpx;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    .cover {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .huan {
+    font-size: 56rpx;
+    color: #333;
+    text-align: center;
+    line-height: 74rpx;
+    margin-top: 35rpx;
+  }
+  .xyzc {
+    font-size: 24rpx;
+    color: #666;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 15rpx;
+    navigator {
+      display: inline;
+      color: $color;
+    }
+  }
+
+  .title {
+    font-size: 56rpx;
+    color: #333;
+    line-height: 74rpx;
+    padding: 0 68rpx;
+  }
+}
+
+.log-way-list {
+  padding: 85rpx 0 1rpx 0;
+  .item {
+    width: 640rpx;
+    height: 90rpx;
+    font-size: 34rpx;
+    color: #666;
+    box-sizing: border-box;
+    border: 2rpx solid #ccc;
+    border-radius: 20rpx;
+    cursor: pointer;
+    user-select: none;
+    margin: 0 auto 25rpx auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .wx-item {
+    color: #fff;
+    border-color: $color;
+    background-color: $color;
+    .icon {
+      display: block;
+      width: 42rpx;
+      height: auto;
+      margin-right: 22rpx;
+    }
+  }
+  
+}
+
+.log-form {
+  padding: 40rpx 0 1rpx 0;
+  .item {
+    width: 600rpx;
+    position: relative;
+    margin: 0 auto 30rpx auto;
+    border-bottom: 2rpx solid #eee;
+    display: flex;
+    align-items: center;
+  }
+  .inp-box {
+    position: relative;
+    flex: 1 1 auto;
+  }
+  .inp-txt {
+    display: block;
+    // width: calc(100% - 50rpx);
+    width: 100%;
+    font-size: 34rpx;
+    color: #333;
+    height: 108rpx;
+    box-sizing: border-box;
+    padding: 0 10rpx;
+    border: none;
+    outline: none;
+  }
+  .input-placeholder {
+    color: #ccc;
+  }
+  .close {
+    width: 50rpx;
+    height: 110rpx;
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    image {
+      width: 22rpx;
+      height: auto;
+    }
+  }
+  .yanzm {
+    flex: 0 0 auto;
+    width: 240rpx;
+    height: 72rpx;
+    margin-left: 20rpx;
+    font-size: 34rpx;
+    color: #fff;
+    background-color: $color;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 20rpx;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn-item {
+    width: 640rpx;
+    margin: 100rpx auto 40rpx auto;
+  }
+  .log-btn {
+    display: block;
+    width: 100%;
+    height: 90rpx;
+    font-size: 34rpx;
+    color: #fff;
+    background: $color;
+    border: 2rpx solid $color;
+    border-radius: 20rpx;
+    outline: none;
+  }
+  .way-item {
+    width: 600rpx;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .w-col {
+      font-size: 30rpx;
+      color: #666;
+      line-height: 46rpx;
+      padding: 0;
+      border-radius: 0;
+      background-color: transparent;
+      margin: 0;
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+}

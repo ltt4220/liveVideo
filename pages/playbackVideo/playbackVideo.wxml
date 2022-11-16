@@ -1,0 +1,112 @@
+<!-- <view class="page-body">
+    <view class="page-section tc">
+        <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
+            binderror="videoErrorCallback" danmu-list="{{danmuList}}" enable-danmu danmu-btn show-center-play-btn='{{false}}' show-play-btn="{{true}}" controls picture-in-picture-mode="{{['push', 'pop']}}" bindenterpictureinpicture='bindVideoEnterPictureInPicture'
+            bindleavepictureinpicture='bindVideoLeavePictureInPicture'></video>
+        <view style="margin: 30rpx auto" class="weui-label">弹幕内容</view>
+        <input bindblur="bindInputBlur" class="weui-input" type="text" placeholder="在此处输入弹幕内容" />
+        <button style="margin: 30rpx auto" bindtap="bindSendDanmu" class="page-body-button" type="primary" formType="submit">发送弹幕</button>
+        <navigator style="margin: 30rpx auto" url="picture-in-picture" hover-class="other-navigator-hover" url="/pages/index/index">
+            <button type="primary" class="page-body-button" bindtap="bindPlayVideo">小窗模式</button>
+        </navigator>
+    </view>
+</view> -->
+<view class="container" id="playbackVideo">
+    <view class="nav-top" style="margin-top:{{statusBarHeight}}px">
+        <view class="nav-top-img" bindtap="onBack">
+            <image class="sharelogo" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/back2.png" wx:if="{{indexTo}}"></image>
+            <image class="sharelogo" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/back2.png" wx:else></image>
+        </view>
+        <view class="nav-top-txt">{{detail.liveTitle}}.回放</view>
+        <view class="nav-top-pad"></view>
+    </view>
+    <view class="header" style="top:calc({{statusBarHeight}}px + 58px)">
+        <view class="hotCount"><text>{{detail.liveHot}}</text>人观看</view>
+        <!-- <view class="qactive" bindtap="change" data-index="{{0}}">{{definitionTxt}}</view> -->
+    </view>
+    <view class="myVideo" style="height: {{fullScreen?'auto':'calc(100vh - 200rpx)'}}">
+        <view class="prismPlayer" wx:if="{{boolStart || boolEnd}}">
+            <view class="prismPlayer_tt"
+                style="background-image:url({{detail.liveCoverImg}});width:100%;height:100%;filter:{{!errCont?'blur(0)':'blur(15rpx)'}}">
+            </view>
+            <view class="prism_box" wx:if="{{errCont}}">
+                <view class="prism_body">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/Group.png" />
+                    <rich-text nodes="{{errCont}}"></rich-text>
+                </view>
+            </view>
+        </view>
+        <video id="myVideo" src="{{src}}" binderror="videoErrorCallback" autoplay="{{true}}" wx:else
+            enable-play-gesture="{{true}}" vslide-gesture="{{true}}" vslide-gesture-in-fullscreen="{{true}}"
+            show-play-btn="{{true}}" controls title="{{detail.liveTitle}}.回放"
+            picture-in-picture-mode="{{['push', 'pop']}}" show-center-play-btn="{{true}}"
+            enable-auto-rotation="{{true}}" show-screen-lock-button="{{true}}"
+            bindfullscreenchange="bindfullscreenchange" bindenterpictureinpicture='bindVideoEnterPictureInPicture'
+            bindleavepictureinpicture='bindVideoLeavePictureInPicture'>
+            <!-- <cover-view class="clarity" wx:if="{{fullScreen}}" catchtap="hidden">
+                <cover-view class="active"
+                    style="right: {{showClarity?'-110rpx':'0'}};top:{{showClarity?'-76rpx':'40rpx'}}" catchtap="change"
+                    data-index="{{1}}">
+                    {{definitionTxt}}
+                </cover-view>
+                <cover-view class="list_item" style="right:{{showClarity?0:'-169rpx'}}">
+                    <cover-view>清晰度选择</cover-view>
+                    <cover-view wx:for="{{queryList}}" wx:for-item="item" wx:for-index="idx" wx:key="{{idx}}"
+                        catchtap="changeQuery" data-index="{{idx}}" class="{{item.active?'checked':'quert'}}">
+                        {{item.title}}
+                    </cover-view>
+
+                </cover-view>
+            </cover-view> -->
+        </video>
+    </view>
+
+    <view class="footer">
+        <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/link.png" bindtap="changeDetail"></image>
+        <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/share.png" bindtap="showShare"></image>
+        <view class="praise" bindtap="addWangGo">
+            <view class="num" wx:if="{{wangObj.isLikeSum}}">{{wangObj.isLikeSum}}</view>
+            <view class="share">
+                <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/shape2.png" wx:if="{{wangObj.userIsLike}}" />
+                <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/shape.png" wx:else />
+            </view>
+        </view>
+    </view>
+    <like-fx id="cvs" count="{{count}}" likeBot="{{likeBot}}" countStatus="{{countStatus}}"></like-fx>
+    <view class="poserBox">
+        <image src="{{detail.liveCoverImg}}"></image>
+    </view>
+    <!-- <shareCanvas paramAtoB="{{shareStatus}}" bind:myevent="onMyEvent" id="toast" goods="{{goods}}"
+        imageUrl="{{imageUrl}}" codeUrl="{{codeUrl}}"></shareCanvas> -->
+    <popBox showPopModal="{{showPopModal}}" style="width: 100%;" bind:shareTit="shareTit"
+        showTab="{{showTab}}" bind:definition="definition"></popBox>
+    <view class='poster' wx:if="{{canvasType}}" style="width:100%;height: 100vh;background: rgba(0,0,0,0.3);"
+        capture-bind:tap='closePos'>
+        <canvas class='canvas' style='height:100vh;width:{{canvasW}}px;background: rgba(0,0,0,0.3);'
+            canvas-id="mycanvas"></canvas>
+
+        <cover-view class='opt'>
+            <cover-view class='item' style="height: {{bottomH}}px;">
+                <button class='ico' bindtap="saveImg">
+                    <cover-image src='https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/down.png'></cover-image>
+                </button>
+                <cover-view class="text">保存到相册</cover-view>
+            </cover-view>
+        </cover-view>
+    </view>
+    <view wx:if="{{showModal}}" class="scan-container" catchtap="closeHid">
+        <view class="scan-box">
+            <view class="scan_head">
+                <button class="scan-createcards" open-type="share" hover-class="none" plain="{{false}}">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/wechar.png"></image>
+                    <text>分享给好友</text>
+                </button>
+                <button class="scan-mycards scan-createcards" catchtap="mycards">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/photo.png"></image>
+                    <text>生成海报</text>
+                </button>
+            </view>
+            <view class="canle" bindtap="closeHid">取消 </view>
+        </view>
+    </view>
+</view>

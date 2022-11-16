@@ -1,0 +1,133 @@
+<view>
+    <swiper indicator-dots="{{swiperData.indicatorDots}}" autoplay="{{swiperData.autoplay}}"
+        vertical="{{swiperData.vertical}}" bindchange="swiperChanged">
+        <block wx:for="{{liveList}}" wx:for-item="item" wx:key="index">
+            <swiper-item>
+                <view class="container" id="playbackVideo">
+                    <view class="nav-top" style="margin-top:{{statusBarHeight}}px">
+                        <view class="nav-top-img" bindtap="onBack">
+                            <image class="sharelogo"
+                                src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/back2.png"
+                                wx:if="{{indexTo}}"></image>
+                            <image class="sharelogo"
+                                src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/back2.png" wx:else>
+                            </image>
+                        </view>
+                        <view class="nav-top-txt">{{item.liveTitle}}.回放</view>
+                        <view class="nav-top-pad"></view>
+                    </view>
+                    <view class="header" style="top:calc({{statusBarHeight}}px + 58px)">
+                        <view class="hotCount"><text>{{item.liveHot}}</text>人观看</view>
+                    </view>
+                    <view class="myVideo" style="height: {{fullScreen?'auto':'calc(100vh - 200rpx)'}}">
+                        <view class="prismPlayer" wx:if="{{item.boolStart || item.boolEnd}}">
+                            <view class="prismPlayer_tt"
+                                style="background-image:url({{item.liveCoverImg}});width:100%;height:100%;filter:{{!item.errCont?'blur(0)':'blur(15rpx)'}}">
+                            </view>
+                            <view class="prism_box" wx:if="{{item.errCont}}">
+                                <view class="prism_body">
+                                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/Group.png" />
+                                    <rich-text nodes="{{item.errCont}}"></rich-text>
+                                </view>
+                            </view>
+                        </view>
+                        <video 
+                            id="myVideo" 
+                            src="{{item.src}}" 
+                            binderror="videoErrorCallback" 
+                            autoplay="{{true}}" 
+                            wx:else
+                            enable-play-gesture="{{true}}" 
+                            vslide-gesture="{{true}}"
+                            vslide-gesture-in-fullscreen="{{true}}" 
+                            show-play-btn="{{true}}" 
+                            controls
+                            title="{{item.liveTitle}}.回放" 
+                            picture-in-picture-mode="{{['push', 'pop']}}"
+                            show-center-play-btn="{{true}}" 
+                            enable-auto-rotation="{{true}}"
+                            show-screen-lock-button="{{true}}"
+                            bindfullscreenchange="bindfullscreenchange"
+                            bindenterpictureinpicture='bindVideoEnterPictureInPicture'
+                            bindleavepictureinpicture='bindVideoLeavePictureInPicture'
+                            data-item="{{item}}" 
+                            data-index="{{index}}"
+                        >
+                        </video>
+                    </view>
+                    <view class="footer">
+                        <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/link.png"
+                            bindtap="changeDetail" data-item="{{item}}" data-index="{{index}}">
+                        </image>
+                        <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/share.png"
+                            bindtap="showShare">
+                        </image>
+                        <view class="praise" bindtap="addWangGo" data-item="{{item}}" data-index="{{index}}">
+                            <view class="num" wx:if="{{item.wangObj.isLikeSum}}">{{item.wangObj.isLikeSum}}</view>
+                            <view class="share">
+                                <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/shape2.png"
+                                    wx:if="{{item.wangObj.userIsLike}}" />
+                                <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/shape.png"
+                                    wx:else />
+                            </view>
+                        </view>
+                    </view>
+                    
+                    <view class="poserBox">
+                        <image src="{{item.liveCoverImg}}"></image>
+                    </view>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+    <cover-view>
+        <like-fx id="cvs" count="{{count}}" likeBot="{{likeBot}}" countStatus="{{countStatus}}"></like-fx>
+    </cover-view>
+    <!-- 海报背景 -->
+    <popBox 
+        showPopModal="{{showPopModal}}" 
+        style="width: 100%;" 
+        bind:shareTit="shareTit" 
+        showTab="{{showTab}}"
+        bind:definition="definition"
+    >
+    </popBox>
+    <!-- 生成海报 -->
+    <view 
+        class='poster' 
+        wx:if="{{canvasType}}" 
+        style="width:100%;height: 100vh;background: rgba(0,0,0,0.3);"
+        capture-bind:tap='closePos'
+    >
+        <canvas 
+            class='canvas' 
+            style='height:100vh;width:{{canvasW}}px;background: rgba(0,0,0,0.3);'
+            canvas-id="mycanvas"
+        >
+        </canvas>
+        <cover-view class='opt'>
+            <cover-view class='item' style="height: {{bottomH}}px;">
+                <button class='ico' bindtap="saveImg">
+                    <cover-image src='https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/down.png'></cover-image>
+                </button>
+                <cover-view class="text">保存到相册</cover-view>
+            </cover-view>
+        </cover-view>
+    </view>
+    <!-- 海报弹框 -->
+    <view wx:if="{{showModal}}" class="scan-container" catchtap="closeHid">
+        <view class="scan-box">
+            <view class="scan_head">
+                <button class="scan-createcards" open-type="share" hover-class="none" plain="{{false}}">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/wechar.png"></image>
+                    <text>分享给好友</text>
+                </button>
+                <button class="scan-mycards scan-createcards" catchtap="mycards">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/photo.png"></image>
+                    <text>生成海报</text>
+                </button>
+            </view>
+            <view class="canle" bindtap="closeHid">取消 </view>
+        </view>
+    </view>
+</view>

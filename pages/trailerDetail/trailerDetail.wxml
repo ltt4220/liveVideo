@@ -1,0 +1,128 @@
+<!--pages/trailerDetail/trailerDetail.wxml-->
+<view class="container" id="trailerDetail">
+    <view class="live-box detail wrapper">
+        <view class="header" style="background-image:url({{detail.liveCoverImg}});">
+            <!-- <image src="{{detail.liveCoverImg}}" alt="" /> -->
+            <!-- <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/play.png" class="vr play"/> -->
+            <image wx:if="{{detail.isVr || (detail.isVr && detail.is5g)}}"
+                src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/5gvr_info.png" class="vr"></image>
+            <image wx:elif="{{detail.is5g}}"
+                src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/5g4k_info.png" class="vr">
+            </image>
+        </view>
+        <view class="content">
+            <view class="time">
+                <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/yu.png" />
+                <view>{{detail.traiTime[0]}}</view>
+                <text>{{detail.traiTime[1]}}-{{detail.traiEndTime}}</text>
+            </view>
+            <view class="tit">{{detail.liveTitle}}</view>
+            <view class="anchor">
+                <view class="user">
+                    <image src="{{detail.userHeadImgUrl}}" alt="" />
+                    <view>{{detail.userName}}</view>
+                </view>
+                <view class="iconbox" bindtap="addWangGo">
+                    <view class="zan">
+                        <view class="count" wx:if="{{wangObj.isLikeSum}}">{{wangObj.isLikeSum}}</view>
+                        <!-- <canvas id="cvs" style="width: 154px; height: 400px;" ref="cvs"></canvas> -->
+                        <view class="active">
+                            <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/shape2.png"
+                                wx:if="{{wangObj.userIsLike}}" />
+                            <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/shape.png" wx:else />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <rich-text id="body_cont" class="txt" nodes="{{detail.liveIntroduction}}">
+        </rich-text>
+        <view class="countdown">
+            <view class="dcount">
+                开播倒计时：
+                <text>{{countDownData[0]}}</text> 天
+                <text>{{countDownData[1]}}</text> 时
+                <text>{{countDownData[2]}}</text> 分
+                <text>{{countDownData[3]}}</text> 秒
+            </view>
+            <!-- <view class="bttom">
+                <view class="share" bindtap="showShare">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/share2.png" alt="" /> 分享
+                </view>
+                <view wx:if="{{openId}}" class="share {{isActive?'remind':'active'}}" bindtap="haveRemind">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/tixing.png"
+                        wx:if="{{!isActive}}" alt="" />
+                    {{isActive?'已设置提醒':'开播提醒我'}}
+                </view>
+                <button wx:else class="share {{isActive?'remind':'active'}}" open-type="getUserInfo"
+                    bindgetuserinfo="getUserInfo">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/tixing.png"
+                        wx:if="{{!isActive}}" alt="" />
+                    {{isActive?'已设置提醒':'开播提醒我'}}
+                </button>
+            </view> -->
+            <view class="bttom">
+                <view class="share" bindtap="showShare">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/share2.png" alt="" /> 分享
+                </view>
+                <view class="share {{isActive?'remind':'active'}}" bindtap="haveRemind">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/tixing.png" wx:if="{{!isActive}}" alt="" />
+                    {{isActive?'取消提醒':'开播提醒我'}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mask maskBox" wx:if="{{remindStatus}}">
+        <view class="content">
+            <view class="cover">
+                <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/oval.png" alt="" />
+            </view>
+            <view class="tit">开播提醒已确认</view>
+            <view class="tips">直播开始时会收到短信发送的开播提醒</view>
+            <view class="button" bindtap="goBack">返回</view>
+        </view>
+    </view>
+    <view class="maskBox" wx:if="{{phoneStatus}}" catchtap="addHiden">
+        <view class="cont-box" catchtap="showHiden">
+            <h3>请输入您的手机号，以便发送开播提醒短信！</h3>
+            <view class="input_box">
+                <input type="number" placeholder="请输入您的手机号" maxlength="11" bindinput="bindKeyInput" />
+            </view>
+            <view class="button" bindtap="addRemind">提交</view>
+        </view>
+    </view>
+    <!-- <shareCanvas  showModal="{{showModal}}" paramAtoB="{{shareStatus}}" bind:myevent="onMyEvent" id="toast" goods="{{goods}}" status="{{2}}"></shareCanvas>
+    <popBox showModal="{{showModal}}" style="width: 100%;" bind:createPoster="createPoster" bind:shareTit="shareTit"></popBox> -->
+    <view class='poster' wx:if="{{canvasType}}" style="width:100%;height: 100vh;background: rgba(0,0,0,0.3);"
+        capture-bind:tap='closePos'>
+        <canvas class='canvas' style='height:100vh;width:{{canvasW}}px;background: rgba(0,0,0,0.3);'
+            canvas-id="mycanvas"></canvas>
+
+        <cover-view class='opt'>
+            <cover-view class='item' style="height: {{bottomH}}px;">
+                <button class='ico' bindtap="saveImg">
+                    <cover-image src='https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/down.png'>
+                    </cover-image>
+                </button>
+                <cover-view class="text">保存到相册</cover-view>
+            </cover-view>
+        </cover-view>
+    </view>
+    <view wx:if="{{showModal}}" class="scan-container" catchtap="closeHid">
+        <view class="scan-box">
+            <view class="scan_head" wx-if="{{showModal && !showTab}}">
+                <button class="scan-createcards" open-type="share" hover-class="none" plain="{{false}}">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/wechar.png"></image>
+                    <text>分享给好友</text>
+                </button>
+                <button class="scan-mycards scan-createcards" catchtap="mycards">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/photo.png"></image>
+                    <text>生成海报</text>
+                </button>
+            </view>
+            <view class="canle" bindtap="closeHid">取消 </view>
+        </view>
+    </view>
+    <like-fx id="cvs" count="{{count}}"></like-fx>
+    <warnBox title="{{title}}" hideModal="{{hideModal}}" warnImg="{{warnImg}}"></warnBox>
+</view>

@@ -1,0 +1,5 @@
+<!--components/warnBox/warnBox.wxml-->
+<view class="modal-dialog" wx:if="{{hideModal}}">
+  <image class="modal-content" src="{{warnImg}}"></image>
+  <view class="modal-title">{{title}}</view>
+</view>

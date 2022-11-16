@@ -1,0 +1,73 @@
+<!--pages/search/search.wxml-->
+<view class="container">
+  <view class="search-wrap">
+    <view class="inp-box">
+      <image class="icon" mode="widthFix" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/seach.png" />
+      <input  class="inp-txt"
+              type="text"
+              confirm-type="search"
+              value="{{searchStr}}"
+              focus="{{isFocus}}"
+              bind:input="searchInput"
+              bind:confirm="search"
+              bind:focus="searchFocus"
+              bind:blur="searchBlur"
+              placeholder="搜索你感兴趣的…" />
+      <view class="clear" style="display: {{isShowClear ? 'block' : 'none'}}" bind:tap="clearInput"><image mode="widthFix" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/seach_clear.png" /></view>
+    </view>
+    <view class="cancel" wx:if="{{searchStr}}" bind:tap="search">搜索</view>
+    <navigator class="cancel" wx:else open-type="navigateBack" hover-class="none">取消</navigator>
+  </view>
+
+  <view class="search-history" wx:if="{{historyList && historyList.length > 0 && !isShowLiveList}}">
+    <view class="search-history-title">
+      历史记录
+      <image class="delete" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/delete.png" bind:tap="clearHistory" />
+    </view>
+    <view class="search-history-list">
+      <view class="item" wx:for="{{historyList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+        <view class="text" data-index="{{index}}" bind:tap="selectHistoryItem">{{item.text}}</view>
+        <image class="close" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/seach_clear.png" data-index="{{index}}" bind:tap="removeHistoryItem" />
+      </view>
+    </view>
+  </view>
+
+  <block wx:if="{{isShowLiveList}}">
+    <view class="live-list">
+      <view class="item" wx:for="{{liveList}}" wx:for-index="index" wx:for-item="item" wx:key="index" data-item="{{item}}" bind:tap="goDetail" wx:if="item.liveIsDisplay != 1">
+          <view class="cover">
+              <image mode="aspectFill" src="{{item.liveCoverImg}}" alt="" class="poster" />
+              <image wx:if="{{item.is5g == 1}}" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/5g4k.png" alt="" class="vr" />
+              <image wx:if="{{item.liveActivityTimeStatus == 2}}" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/yu.png" class="status" />
+              <image wx:if="{{item.liveActivityTimeStatus == 3}}" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/play.png" alt="" class="play" />
+              <view class="live" wx:if="{{item.liveActivityTimeStatus == 1}}">
+                  <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/live.gif" />
+                  <text>直播中</text>
+              </view>
+          </view>
+          <view class="stit">
+              {{item.liveTitle}}
+          </view>
+          <view class="info">
+              <view class="user">
+                  <image mode="aspectFill" src="{{item.userHeadImgUrl ||  'https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/title.png'}}" alt="" class="ui" />
+                  <view class="un">{{item.userName}}</view>
+              </view>
+              <view class="num"><image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/view.png" alt="" /><text>{{item.liveHotNew}}</text></view>
+          </view>
+      </view>
+    </view>
+
+    <view class="loadingDiv" wx:if="{{page.isLoading}}">
+      <image class="loadingImg" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/loading.gif" />
+      <text>加载中。。。</text>
+    </view>
+    <view class="loadingDiv" wx:if="{{page.end && liveList.length > 0}}">
+      <text>我是有底限的~~~</text>
+    </view>
+    <view class="emptyDiv" wx:if="{{liveList.length <= 0 && !page.isLoading}}">
+      <image class="emptyImg" mode="widthFix" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/noeditor.png" />
+    </view>
+  </block>
+
+</view>

@@ -1,0 +1,91 @@
+/* components/warnBox/warnBox.wxss */
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 475rpx;
+  height: 400rpx;
+  background: white;
+  border-radius: 20rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.modal-title {
+
+  font-size: 38rpx;
+  font-family: 'MicrosoftYaHei-Bold, MicrosoftYaHei';
+  font-weight: bold;
+  color: #333333;
+  letter-spacing: 3rpx;
+}
+
+.modal-content {
+  width: 90rpx;
+  height: 90rpx;
+  margin-bottom: 57rpx;
+}
+
+.checkBox {
+  width: 117rpx;
+  height: 117rpx;
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: 0.3s all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.check {
+  width: 0;
+  font-weight: bold;
+  height: 67.86rpx;
+  line-height: 67.86rpx;
+  text-align: center;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -40.43rpx;
+  margin-top: -33.93rpx;
+  font-size: 90.86rpx;
+  animation: mytext 0.8s linear both;
+  transition: 0.5s all;
+  overflow: hidden;
+}
+
+.nocheck {
+  width: 0;
+}
+
+@keyframes mytext {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 80.86rpx;
+  }
+}

@@ -1,0 +1,13 @@
+<!--components/popUp/popUp.wxml-->
+<view class="mark" style="height:100%">
+  <view class="box" style="width:{{contBoxW}}px;">
+    <view class="content" style="text-align:{{textAlign}};height:{{boxHeight}}px;color:{{contColor}};font-size:{{contFsize}}px;font-weight:{{contWeight}};padding-left:{{contBoxPadLR}}px;padding-right:{{contBoxPadLR}}px;">
+      <view style="padding-bottom:{{contentTitBot}}px">{{contentTit}}</view>
+      <image src="{{contImg}}" style="height:{{contImgH}}px;width:{{contImgW}}px;"></image>
+    </view>
+    <view class="btn" style="height:{{btnHeight}}px;line-height:{{btnHeight}}px;flex-direction:{{direction==1?'row':'column'}}">
+      <button bindtap="_leftBtn" style="color:{{leftcolor}};font-weight:{{leftWeight}};font-size:{{btnFsize}}px;">{{leftBtnTit}}</button> 
+      <button class="_rightBtn" bindtap="_rightBtn" wx:if="{{direction== 1}}" style="color:{{rightcolor}};font-weight:{{rightWeight}};font-size:{{btnFsize}}px;">{{rightBtnTit}}</button> 
+    </view>
+  </view>
+</view>

@@ -1,0 +1,449 @@
+/* components/popBot/popBox.wxss */
+swiper {
+  height: 568px;
+}
+.scan-container {
+  width: 100%;
+  box-sizing: border-box;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.mask {
+  width: 100%;
+  box-sizing: border-box;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+.scan-box {
+  background-color: white;
+  position: fixed;
+  border-top-left-radius: 14.04rpx;
+  border-top-right-radius: 14.04rpx;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  font-size: 34rpx;
+  color: #666;
+  text-align: left;
+  z-index: 11;
+  animation: myflash 0.3s linear both;
+}
+@keyframes myflash {
+  from {
+    height: 0;
+    bottom: -360rpx;
+  }
+  to {
+    height: 360rpx;
+    bottom: 0rpx;
+  }
+}
+.scan_head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 266rpx;
+  border-bottom: 20rpx solid #f6f6f6;
+  padding-bottom: 15rpx;
+  box-sizing: border-box;
+}
+.scan-createcards {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: white;
+  font-size: 34rpx;
+  color: #666;
+}
+button::after {
+  border: none;
+}
+.scan-createcards image {
+  width: 108rpx;
+  height: 108rpx;
+}
+.scan_Top {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 266rpx;
+  border-bottom: 20rpx solid #f6f6f6;
+  padding-bottom: 15rpx;
+  box-sizing: border-box;
+}
+.scan_Top .text {
+  margin-bottom: 42rpx;
+  font-size: 38rpx;
+  font-family: ' MicrosoftYaHei-Bold, MicrosoftYaHei';
+  font-weight: bold;
+  color: #333333;
+}
+.scan_Top .box {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+.scan_Top .box .quert {
+  width: 180rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  border: 2rpx solid #CCCCCC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34rpx;
+  font-family: 'MicrosoftYaHei';
+  color: #666666;
+}
+.scan_Top .box .active {
+  color: white;
+  background: #647EFF;
+}
+.scan_Top .box .quert:nth-of-type(2) {
+  margin: 0 30rpx;
+}
+.canle {
+  height: 94rpx;
+  line-height: 94rpx;
+  text-align: center;
+  width: 100%;
+}
+.poster {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+}
+.poster .opt {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.poster .opt .item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.poster .opt .item .ico {
+  width: 88rpx;
+  height: 88rpx;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+.poster .opt .item .ico::after {
+  display: none;
+}
+.poster .opt .item .ico cover-image {
+  width: 100%;
+  height: 100%;
+}
+.poster .opt .item .text {
+  margin-top: 14rpx;
+  height: 56rpx;
+  font-size: 26rpx;
+  font-family: 'MicrosoftYaHei';
+  color: #FFFFFF;
+  line-height: 56rpx;
+  text-shadow: 0rpx 2rpx 4rpx rgba(0, 0, 0, 0.5);
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  height: 100vh;
+}
+.container .nav-top {
+  position: fixed;
+  width: calc(100% - 90px);
+  top: 0;
+  left: 0;
+  height: 50px;
+  z-index: 3;
+  display: flex;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+  box-sizing: border-box;
+  align-items: center;
+  color: white;
+}
+.container .nav-top .nav-top-img {
+  height: 58rpx;
+  width: 58rpx;
+  margin-right: 12rpx;
+}
+.container .nav-top .nav-top-img image {
+  width: 100%;
+  height: 100%;
+}
+.container .nav-top .nav-top-txt {
+  width: 100%;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-weight: 500;
+  text-align: center;
+  flex: 1;
+}
+.container .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-right: 25rpx;
+  box-sizing: border-box;
+  margin-top: 46rpx;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+.container .header .hotCount {
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  font-family: 'MicrosoftYaHei';
+  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0rpx 25rpx 25rpx 0rpx;
+}
+.container .header .hotCount text {
+  font-size: 32rpx;
+  font-family: 'MicrosoftYaHei-Bold, MicrosoftYaHei';
+  font-weight: bold;
+  color: #FBD148;
+  margin-right: 10rpx;
+}
+.container .header .qactive {
+  width: auto;
+  padding: 10rpx 13rpx;
+  background: #647EFF;
+  border-radius: 25rpx;
+  font-size: 24rpx;
+  font-family: 'MicrosoftYaHei';
+  color: #FFFFFF;
+  min-width: 100rpx;
+  text-align: center;
+}
+.container .myVideo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.container .myVideo .prismPlayer {
+  width: 100%;
+  height: 420rpx;
+  position: relative;
+}
+.container .myVideo .prismPlayer .prismPlayer_tt {
+  background-size: cover;
+}
+.container .myVideo .prismPlayer .prism_box {
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.container .myVideo .prismPlayer .prism_box .prism_body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.container .myVideo .prismPlayer .prism_box .prism_body image {
+  width: 83rpx;
+  height: 80rpx;
+}
+.container .myVideo .prismPlayer .prism_box .prism_body rich-text {
+  margin-top: 31rpx;
+  height: 112rpx;
+  font-size: 36rpx;
+  font-family: 'Microsoft YaHei';
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 57rpx;
+  text-align: center;
+}
+.container .myVideo video {
+  width: 100%;
+  height: 420rpx;
+}
+.container .myVideo video .clarity {
+  width: 169rpx;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  position: fixed;
+  right: 0;
+}
+.container .myVideo video .clarity .active {
+  visibility: visible;
+  padding: 0 13rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  color: white;
+  font-size: 24rpx;
+  font-family: 'MicrosoftYaHei';
+  color: #FFFFFF;
+  background: #647EFF;
+  border-radius: 25rpx;
+  position: absolute;
+  min-width: 100rpx;
+  text-align: center;
+}
+.container .myVideo video .clarity .list_item {
+  visibility: visible !important;
+  width: 169rpx;
+  height: 100vh;
+  background: #222;
+  position: relative;
+  right: -169rpx;
+  top: 0;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.container .myVideo video .clarity .list_item cover-view {
+  visibility: visible;
+  font-size: 22rpx;
+  width: 100%;
+  border-radius: 0;
+  color: white;
+  height: 51rpx;
+  line-height: 51rpx;
+  margin-top: 30rpx;
+  text-align: center;
+}
+.container .myVideo video .clarity .list_item cover-view.checked {
+  color: #FFFFFF;
+  height: 51rpx;
+  line-height: 51rpx;
+  background: #647EFF;
+  border-radius: 25rpx;
+}
+.container .poserBox {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), white);
+}
+.container .poserBox image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(15rpx);
+  opacity: 0.5;
+}
+.container .footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 27rpx;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  bottom: 22rpx;
+  z-index: 1;
+}
+.container .footer image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 50%;
+  width: 72rpx;
+  height: 72rpx;
+  background: rgba(0, 0, 0, 0.3);
+}
+.container .footer image:nth-of-type(2) {
+  margin: 0 20rpx;
+}
+.container .footer .praise {
+  position: relative;
+}
+.container .footer .praise .num {
+  position: absolute;
+  top: -42rpx;
+  left: 0;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 22rpx;
+  color: #DE524F;
+  padding: 0 13rpx;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  min-width: 80rpx;
+  text-align: center;
+}
+.container .footer .praise .share {
+  width: 72rpx;
+  height: 72rpx;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.container .footer .praise .share image {
+  width: 41rpx;
+  height: 44rpx;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  background: transparent;
+}
+.container .footer .praise .falsh_box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.container .footer .praise .falsh_box image {
+  width: 80rpx;
+  height: 80rpx;
+  display: block;
+  object-fit: cover;
+}
+.container wx-video wx-cover-view {
+  visibility: hidden;
+}

@@ -1,0 +1,219 @@
+<view id="liveDetail">
+    <view class="end-live" wx:if="{{isEnd}}">
+        <image class="bg-cover" src="{{endLiveData.liveCoverImg}}"></image>
+        <view class="live-header" style="margin-top:{{statusBarHeight}}px">
+            <view class="live-title">
+                <image catchtap="goBack" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/back5.png"></image>
+                <view class="title-name">{{endLiveData.liveTitle}}</view>
+            </view>
+        </view>
+        <view class="header">
+            <view class="title">直播已结束</view>
+            <view class="intro">请耐心等待5-10分钟后查看精彩回放</view>
+        </view>
+        <view class="middle">
+            <view>
+                <view class="num">{{endLiveData.time}}</view>
+                <view class="title">播放时长</view>
+            </view>
+            <view>
+                <view class="num">{{endLiveData.watchNumber}}</view>
+                <view class="title">观看人数</view>
+            </view>
+            <view>
+                <view class="num">{{endLiveData.giftCount}}</view>
+                <view class="title">礼物收获</view>
+            </view>
+        </view>
+        <view class="footer">
+            <view class="text" bindtap="redirect">回首页</view>
+        </view>
+    </view>
+    <view class="live-container" bindtap="onCloseGift" wx:else>
+        <image class="bg-cover" src="{{detailData.liveCoverImg}}"></image>
+        <view class="page-header" style="padding-top:{{statusBarHeight}}px">
+            <view class="header-container">
+                <view class="live-title">
+                    <image catchtap="goBack" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/back5.png"></image>
+                    <view class="title-name">{{detailData.liveTitle}}</view>
+                </view>
+            </view>
+            <view class="views-definition">
+                <view class="views-num">
+                    <text class="num">{{detailData.liveHot}}</text>
+                    <text>人观看</text>
+                </view>
+                <view  wx:if="{{detailData.transcodeTemplateId}}" class="definition" catchtap="onShowClarity">
+                    {{clarityInfo.name}}
+                    <image class="five-g" wx:if="{{clarityInfo.outputResolution == '4K'}}" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/five-g.png" />
+                </view>
+            </view>
+        </view>
+    <view class="main-content" style="height:{{wxScrrenHeight - statusBarHeight - 48 - 50}}px;margin-top:{{statusBarHeight + 48 + 44}}px">
+            <live-player  bindenterpictureinpicture='bindVideoEnterPictureInPicture'
+            bindleavepictureinpicture='bindVideoLeavePictureInPicture' picture-in-picture-mode="{{['push', 'pop']}}" class="live-player" src="{{clarityInfo.rtmplinkUrl}}" mode="live" autoplay>
+                <cover-view class="cover-view">
+                    <cover-image class="live-tag" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/live.gif"></cover-image>
+                    <cover-view>直播中</cover-view>
+                </cover-view>
+            </live-player>
+            <view class="middle-content">
+                <view class="gift-container">
+                    <cover-view></cover-view>
+                    <scroll-view scroll-x="true" class="gift-scroll" scroll-left='{{scrollleft}}' scroll-with-animation>
+                        <view class="gift-content">
+                            <view class="gift-info" wx:if="{{sendGiftData.length > 1}}" wx:for="{{sendGiftData}}" wx:key="index">
+                                <view class="gift-main" wx:if="{{index > 0}}">
+                                    <view class="user-avatar">  
+                                        <image src="{{item.userHeadImgUrl || 'https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/title.png'}}"></image>
+                                    </view>
+                                    <view>
+                                        <view class="user-name">{{item.userName}}</view>
+                                        <view class="gift-name">送出{{item.giftName}}</view>
+                                    </view>
+                                    <image class="gift-img" src="{{item.giftImg}}"></image>
+                                </view>
+                                <view class="gift-num" wx:if="{{index > 0}}">
+                                    <view class="icon">x</view>
+                                    <view class="num">{{item.giftNum}}</view>
+                                </view>
+                            </view> 
+                        </view>
+                    </scroll-view>
+                </view>
+                <view class="interaction-info">
+                    <scroll-view scroll-y="true" class="interaction" scroll-top='{{scrolltop}}'>
+                        <view class="message">
+                            <view class="intro">欢迎来到直播间！我们提倡绿色直播，严禁发布涉政、违法、色情低俗、封建迷信、暴力血腥等违规内容。健康直播，文明互动。</view>
+                            <view class="list">
+                                <view wx:for="{{commentData}}" wx:key="index" class="items">
+                                    <view class="contents {{item.role == 0 ? (item.uid == userInfo.userId ? 'my-self' : 'other'):''}} {{item.role == 1 ? 'admin':''}} {{item.role == 3 ? 'new-user':''}}">
+                                        <view class="name">
+                                            <image class="admin-img" wx:if="{{item.role == 1}}" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/huangguan.png" />
+                                            <span>{{item.username}}</span>
+                                            <span wx:if="{{item.role == 0}}">：</span>
+                                        </view>
+                                        <span class="comments">{{item.msg}}</span>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </scroll-view>
+                    <view class="goods-intro" wx:if="{{recommendList.length > 0}}">
+                        <view class="goods-link">
+                            <view class="link-header">
+                                <view class="goods-status">
+                                    讲解中
+                                </view>
+                                <view class="close" catchtap="onCloseGoods">
+                                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/log-close.png" />
+                                </view>
+                            </view>
+                            <view class="goods-intro-img" data-id="{{recommendList[0].entityId}}" catchtap="redirectToActivity">
+                                <image src="{{recommendList[0].images}}"/>
+                            </view>
+                            <view class="goods-price" wx:if="{{recommendList[0].title}}">
+                                {{recommendList[0].title}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        
+            <view class="{{isShowComment ? 'reset-footer' : 'footer'}}">
+                <view class="footer-info">
+    
+                    <view class="goods-entry" catchtap="onRedirectGoods" wx:if="{{goodsList.length > 0}}">
+                        <image class="goods-icon" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/default.png" /> 
+                        <view>{{goodsList.length}}</view>
+                    </view>
+    
+                    <view class="{{isShowComment ? 'comment-info' : 'input-info'}}" style="bottom: {{keyboardHeight}}px;">
+                        <image class="input-icon" wx:if="{{!isShowComment}}" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/input.png" /> 
+                        <input adjust-position="{{false}}"  bindinput="getInputInfo"  confirm-type="send" bindblur="bindblur" bindconfirm="submitComment" type="text" bindfocus="getFocus" value="{{commentValue}}" placeholder="说点什么..." placeholder-class="{{isShowComment ? 'placeholder-comment' : 'input-placeholder'}}" />
+                        <view class="submit-btn" wx:if="{{isShowComment}}" catchtap="submitComment">发送</view>
+                    </view>
+    
+    
+                    <image class="icon" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/link.png"  catchtap="onRedirectToDetail" /> 
+                    <image class="icon" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/share.png" catchtap="showShare"/> 
+                    <image class="icon" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/gift.png"  catchtap="onShowGift"/>
+                    <view class="praise" catchtap="onChangePraise">
+                        <view class="num" wx:if="{{praiseInfo.isLikeSum}}">{{praiseInfo.isLikeSum}}</view>
+                        <view class="share">
+                            <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/shape2.png" wx:if="{{praiseInfo.userIsLike}}" />
+                            <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/shape.png" wx:else />
+                        </view>
+                    </view>
+                </view>    
+            </view>
+            <like-fx id="cvs" count="{{count}}" likeBot="{{likeBot}}"></like-fx>
+            
+            <view wx:if="{{detailData.transcodeTemplateId}}" class="clarity-pop {{isShowClarity ? 'clarity-box' : ''}}">
+                <view class="clarity-type">
+                    <view class="clarity-title">清晰度选择</view>
+                    <view class="clarity-list">
+                        <view catchtap="onChangeClarity" wx:for="{{detailData.transcodeTemplateList}}" data-clarity="{{item}}" class="clarity-items {{item.outputResolution === clarityInfo.outputResolution ? 'current-clarity' : ''}}" wx:key="item">
+                            <view>{{item.name}}</view>
+                            <image class="five-g" wx:if="{{item.name == '4K'}}" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/five-g.png" />
+                        </view>
+                    </view>
+                </view>
+                <view class="cancel-clarity" catchtap="onCloseClarity">取消</view>
+            </view>
+        
+            <view class="gift-pop {{isShowGift ? 'gift-box' : ''}}">
+                <view class="gift-list">
+                    <view catchtap="onChangeGiftType" wx:for="{{giftData}}" data-item="{{item}}" class="gift-items" wx:key="index">
+                        <view class="items-content {{item.giftId === currentGift ? 'current-gift' : ''}}">
+                            <image class="gift-img" src="{{item.giftUrl}}" />
+                            <view class="items-title">{{item.giftName}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="gift-operation">
+                    <van-stepper class="stepper" value="{{ giftValue }}" bind:change="onChangeGiftNum" />
+                    <view class="submit" catchtap="submitGift">赠送</view>
+                </view>
+            </view>
+        
+            <!-- <view class="comment-info {{isShowComment ? 'comment-input' : ''}}" style="bottom: {{keyboardHeight}}px;">
+                <view class="comment-con">
+                    <input focus="{{isShowComment}}" bindinput="getInputInfo" bindblur="bindblur" value="{{commentValue}}" bindconfirm="submitComment" type="text" placeholder="说点什么吧..." placeholder-class="placeholder-comment" />
+                    <view class="submit-btn" catchtap="submitComment">发送</view>
+                </view>
+            </view> -->
+        
+        
+            <view class='poster' wx:if="{{canvasType}}" style="width:100%;height: 100vh;background: rgba(0,0,0,0.3);"
+                capture-bind:tap='closePos'>
+                <canvas class='canvas' style='height:{{canvasH}}px;width:{{canvasW}}px;background: rgba(0,0,0,0.3);'
+                    canvas-id="mycanvas"></canvas>
+        
+                <cover-view class='opt'>
+                    <cover-view class='item' style="height: {{bottomH}}px;">
+                        <button class='ico' bindtap="saveImg">
+                            <cover-image src='https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/down.png'></cover-image>
+                        </button>
+                        <cover-view class="text">保存到相册</cover-view>
+                    </cover-view>
+                </cover-view>
+            </view>
+            <view wx:if="{{showModal}}" class="scan-container" catchtap="closeHid">
+                <view class="scan-box">
+                    <view class="scan_head" wx-if="{{showModal && !showTab}}">
+                        <button class="scan-createcards" open-type="share" hover-class="none" plain="{{false}}">
+                            <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/wechar.png"></image>
+                            <text>分享给好友</text>
+                        </button>
+                        <button class="scan-mycards scan-createcards" catchtap="mycards">
+                            <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/photo.png"></image>
+                            <text>生成海报</text>
+                        </button>
+                    </view>
+                    <view class="canle" bindtap="closeHid">取消 </view>
+                </view>
+            </view>
+    </view>
+</view>

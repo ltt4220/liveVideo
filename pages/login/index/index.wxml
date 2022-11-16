@@ -1,0 +1,20 @@
+<!--pages/login/index/index.wxml-->
+<view class="container">
+   <view class="log-base">
+       <view class="logo">
+           <image class="cover" mode="aspectFill" src="{{shopInfo.shopHeadImg ? shopInfo.shopHeadImg : 'https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/log-logo.png'}}" />
+       </view>
+       <view class="huan">欢迎登录</view>
+       <view class="xyzc" style="display:none;">
+           登录将自动注册，请详读
+           <navigator url="javascript:;">用户注册协议</navigator>
+           、
+           <navigator url="javascript:;">隐私权政策</navigator>
+       </view>
+   </view>
+    <view class="log-way-list">
+        <button class="item wx-item" open-type="getUserInfo" bindgetuserinfo="getUserInfo"><image class="icon" mode="widthFix" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/log-wechat.png" />微信登录</button>
+        <navigator class="item" url="../sms/sms" open-type="redirect">短信验证码登录</navigator>
+        <navigator class="item" url="../account/account" open-type="redirect">帐号密码登录</navigator>
+    </view>
+</view>

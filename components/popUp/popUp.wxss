@@ -1,0 +1,77 @@
+/* components/popUp/popUp.wxss */
+.mark {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.box {
+  width: 580.32rpx;
+  background: #fff;
+  border-radius: 11.7rpx;
+}
+
+.content {
+  box-sizing: border-box;
+  height: 163.8rpx;
+  border-bottom: solid 1px #f2f2f2;
+  padding: 0rpx 46.8rpx 0rpx 46.8rpx;
+  font-size: 32.76rpx;
+  text-align: center;
+  display: flex;
+  display: -webkit-flex;
+  font-weight: normal;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.content view {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  flex-direction: column;
+  height: 117rpx;
+  line-height: 117rpx;
+  overflow: hidden;
+  border-radius: 11.7rpx;
+}
+
+.btn button {
+  width: 100%;
+  font-size: 32.76rpx;
+  text-align: center;
+  font-weight: bold;
+  background-color: white;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+}
+
+.btn button::after {
+  content: "";
+  display: none;
+}
+
+._rightBtn {
+  border-left: solid 2.34rpx #f2f2f2;
+}

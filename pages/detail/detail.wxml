@@ -1,0 +1,131 @@
+<view class="detail">
+    <view class="header">
+        <view class="title">{{detailData.liveTitle}}</view>
+        <view class="other">
+            <view class="cover">
+                <image src="{{detailData.userHeadImgUrl}}"></image>
+            </view>
+            <view class="address-date">
+                <view class="address">{{detailData.userName}}</view>
+                <view class="date">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/time.png"></image>
+                    {{detailData._time}} {{detailData._liveStartTime}}-{{detailData._liveEndTime}}
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="main-content">
+        <view class="nav">
+            <view bindtap="onChangeNav" wx:key="index" wx:for="{{navData}}" data-value="{{item.value}}" class="nav-items">
+                <view class="{{item.value === currentNav ? 'current' : ''}}">{{item.title}}</view>
+                <view class="comment-num" wx:if="{{item.value === 0}}">{{commentData.length}}</view>
+            </view>
+        </view>
+
+        <view class="comment-info" wx:if="{{currentNav === 0}}">
+            <view class="comment-con">
+                <view wx:if="{{commentData.length > 0}}" class="comment-list">
+                    <view wx:for="{{commentData}}" wx:key="index" class="items">
+                        <view class="cover">
+                            <image src="{{item.userHeadImgUrl || 'https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/title.png'}}"></image>
+                        </view>
+                        <view class="other">
+                            <view class="user-info">
+                                <view class="user-name">
+                                    {{item.userName}}
+                                </view>
+                                <view class="date">
+                                    {{item.messageCreateTime}}
+                                </view>
+                            </view>
+                            <view class="comment">
+                                <rich-text nodes=" {{item.messageContent}}"></rich-text>
+                               
+                            </view>
+                        </view>
+                    </view>
+                </view>
+    
+                <view wx:else class="no-comment">
+                    <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/no-comment.png"></image>
+                    <view class="text">暂无评论，快抢沙发喽～</view>
+                </view>
+            </view>
+            <view class="input-info" style="bottom: {{keyboardHeight}}px">
+                <input class="main" adjust-position="{{false}}" bindinput="bindinput" confirm-type="send" bindconfirm="addComment" bindblur="bindblur" bindfocus="getFocus" value="{{commentValue}}" type="text" placeholder="说点什么吧..." placeholder-class="placeholder" />
+                <view class="submit-btn" bindtap="addComment">发送</view>
+            </view>
+        </view>
+
+        <view class="intro" wx:elif="{{currentNav === 1}}">
+            <rich-text nodes="{{detailData.liveIntroduction}}"></rich-text>
+        </view>
+
+        <view class="video-recommend" wx:elif="{{currentNav === 2}}">
+            <view class="video-list">
+                <view wx:for="{{liveData}}" bindtap="redirect" data-type="1" data-item="{{item}}" wx:key="index" class="items">
+                    <view class="cover">
+                        <image class="cover-img" src="{{item.liveCoverImg}}"></image>
+
+                        <view class="vr" wx:if="{{item.isVr || item.is5g}}">
+                            <image wx:if="{{item.isVr || (item.isVr && item.is5g)}}" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/5gvr_info.png"></image>
+                            <image wx:elif="{{item.is5g}}" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/5g4k_info.png"></image>
+                        </view>
+                        <view class="video-status">
+                            <image wx:if="{{item.liveActivityTimeStatus === 2}}" class="foreshow" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/foreshow.png"></image>
+                            <image wx:elif="{{item.liveActivityTimeStatus === 1}}" class="live" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/live.png"></image>
+                        </view>
+
+                        <image class="video" wx:if="{{item.liveActivityTimeStatus === 3}}" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/btn_play1.png"></image>
+                    </view>
+
+
+                    <view class="other">
+                        <view class="title">{{item.liveTitle}}</view>
+                        <view class="content">
+                            <view class="user-info">
+                                <view class="user-avatar">
+                                    <image src="{{item.userHeadImgUrl}}"></image>
+                                </view>
+                                <view class="user-name">
+                                    {{item.userName}}
+                                </view>
+                            </view>
+                            <view class="view-num">
+                                <image src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/view.png"></image>
+                                {{item.liveHot}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view wx:else class="activity-recommend">
+            <view class="items" wx:for="{{activityList}}" bindtap="redirect" data-type="2" data-id="{{item.id}}" wx:key="index">
+                <view class="cover">
+                    <image class="img" src="{{item.image}}"></image>
+                </view>
+                <view class="other">
+                    <view class="title">{{item.title}}</view>
+                    <view class="date-info">
+                        <view class="date">{{item.startTime}}</view>
+                        <view class="btn" wx:if="{{item.availableCount > 0 || item.activityIsReservation == 1}}">预订</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="comment-modal" wx:if="{{isShowSuccess}}">
+        <image class="success" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/success.png"></image>
+        <view class="title">提交成功</view>
+        <view class="notice">请等待内容审核通过！</view>
+    </view>
+    <view class="comment-modal" wx:if="{{isShowError}}">
+        <image class="error" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/error.png"></image>
+        <view class="title">发送失败</view>
+        <view class="notice">{{errmsg}}</view>
+    </view>
+</view>

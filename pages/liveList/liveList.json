@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-stepper": "../../miniprogram_npm/@vant/weapp/stepper/index",
+    "like-fx": "/components/likeFx/likeFx"
+  },
+  "navigationStyle":"custom"
+}

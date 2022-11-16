@@ -1,0 +1,480 @@
+/* pages/trailerDetail/trailerDetail.wxss */
+
+@import "../../components/canvas/canvas.wxss";
+.container {
+    height: 100%;
+}
+
+.container header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 32rpx;
+    position: relative;
+}
+
+
+/* 直播 */
+
+.container .live-box .header {
+    width: 750rpx;
+    height: 420rpx;
+    margin-bottom: 40rpx;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container .live-box .header image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.container .live-box .header .vr {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 106rpx;
+    height: 36rpx;
+}
+.container .live-box .header .play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 108rpx;
+    height: 108rpx;
+    transform:translate(-50%,-50%);
+}
+
+.container .live-box .content {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: -26rpx;
+    margin-right: -26rpx;
+}
+
+.container .live-box .content .time {
+    margin-bottom: 20rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.container .live-box .content .time image {
+    width: 88rpx;
+    height: 42rpx;
+    margin-right: 19rpx;
+}
+
+.container .live-box .content .time view {
+    font-size: 52rpx;
+    color: #000;
+    font-weight: 600;
+    padding-right: 30rpx;
+    position: relative;
+    vertical-align: sub;
+    line-height: 73rpx;
+}
+
+.container .live-box .content .time view:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    height: 21rpx;
+    width: 3rpx;
+    background: #e6e6e6;
+    top: 50%;
+    margin-top: -10rpx;
+}
+
+.container .live-box .content .time text {
+    font-size: 32rpx;
+    color: #000;
+    font-style: normal;
+    margin-left: 17rpx;
+}
+
+.container .live-box .content .tit {
+    font-size: 40rpx;
+    color: #333333;
+    max-height: 112rpx;
+    line-height: 56rpx;
+    font-weight: 600;
+    margin-bottom: 10rpx;
+}
+
+.container .live-box .content .anchor {
+    margin-bottom: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60rpx;
+}
+
+.container .live-box .content .anchor .user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container .live-box .content .anchor .user image {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 30rpx;
+    margin-right: 13rpx;
+}
+
+.container .live-box .content .anchor .user view {
+    color: #333333;
+    font-size: 29rpx;
+    margin-right: 10rpx;
+}
+
+.container .live-box .content .anchor .iconbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container .live-box .content .iconbox .active {
+    display: flex;
+    align-items: center;
+    width: 48rpx;
+    height: 48rpx;
+    color: white;
+    justify-content: center;
+}
+
+.container .live-box .content .iconbox .active image {
+    width: 100%;
+    height: 100%;
+}
+
+.container .live-box .content .anchor .zan {
+    position: relative;
+}
+
+.container .live-box .content .anchor canvas {
+    position: absolute;
+    top: -90rpx;
+    left: -25rpx;
+    z-index: 20;
+}
+
+.container .live-box .content .anchor .zan .count {
+    color: #DE524F;
+    font-size: 22rpx;
+    background: #FFFFFF;
+    box-shadow: 0rpx 2rpx 6rpx 0rpx rgba(0, 0, 0, 0.2);
+    border-radius: 15rpx;
+    position: absolute;
+    top: -40rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    margin: 0;
+    text-align: center;
+}
+
+.container .live-box .content .anchor .zan span.active .icon-dianzan {
+    color: #DE524F;
+}
+
+.container .live-box .content .anchor .zan img {
+    width: 60rpx;
+    height: 58rpx;
+}
+
+.container .live-box .txt p {
+    margin: 0;
+    font-size: 29rpx;
+    font-weight: 400;
+    color: #7E7E7E;
+    line-height: 1.5;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-all;
+}
+
+.container .live-box .dcount {
+    color: #666666;
+    font-size: 30rpx;
+    text-align: center;
+    margin-bottom: 17rpx;
+}
+
+.container .live-box .dcount text {
+    color: #DE524F;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.container .live-box.detail .content {
+    /* padding: 0 30rpx; */
+    padding-left: 32rpx;
+    padding-right: 27rpx;
+    margin: 0;
+}
+
+
+/* .container .live-box .txt {
+    background: #F6F7FC;
+    padding: 18rpx 29rpx;
+    box-sizing: border-box;
+    border-radius: 20rpx;
+    overflow: hidden;
+    width: 690rpx;
+    margin: 0 auto;
+} */
+
+.container #body_cont {
+    width: calc(100% - 60rpx);
+    margin: 0 auto;
+    padding: 15rpx 30rpx;
+    box-sizing: border-box;
+    background: #F6F7FC;
+    border-radius: 20rpx;
+    text-align: justify;
+    font-size: 28rpx;
+    font-family: '微软雅黑';
+    color: #7e7e7e;
+    line-height: 48rpx;
+    display: block;
+}
+
+.container #body_cont p {
+    width: 100%;
+    font-size: 28rpx;
+    font-family: '微软雅黑';
+    color: #7e7e7e;
+    line-height: 48rpx;
+    text-align: left;
+    white-space: normal;
+}
+
+.container #body_cont span {
+    display: inline-block;
+    white-space: pre-wrap;
+}
+
+.container #body_cont .rich-img {
+    display: inline-block;
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.container #body_cont span {
+    font-size: 28rpx;
+    font-family: '微软雅黑';
+    color: #7e7e7e;
+    line-height: 48rpx;
+    text-align: left;
+}
+
+.container #body_cont strong {
+    font-size: 28rpx;
+    font-family: '微软雅黑';
+    color: #7e7e7e;
+}
+
+.container #body_cont a {
+    text-decoration: none;
+    color: #7e7e7e;
+}
+
+.container .live-box.detail .countdown {
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    padding: 28rpx 30rpx 48rpx;
+}
+
+.container .live-box .bttom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container .live-box .bttom .share {
+    outline: none;
+    border: none;
+    border-radius: 20rpx;
+    height: 90rpx;
+    color: #647EFF;
+    font-size: 34rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.container .live-box .bttom .share {
+    width: 245rpx;
+    height: 90rpx;
+    border-radius: 20rpx;
+    border: 2rpx solid #647EFF;
+    background: white;
+}
+
+.container .live-box .bttom .share image {
+    width: 40rpx;
+    height: 40rpx;
+    vertical-align: bottom;
+    margin-right: 17rpx;
+}
+
+.container .live-box .bttom .active {
+    color: #fff;
+    background: #647EFF;
+    width: 425rpx;
+    height: 90rpx;
+}
+
+.container .live-box .bttom .remind {
+    width: 425rpx;
+    height: 90rpx;
+    background: #DDE2FF;
+    border: none;
+}
+
+
+/* 弹框 */
+
+.mask {
+    background: white !important;
+}
+
+.mask .content {
+    margin-top: 234rpx;
+}
+
+.mask .content .cover {
+    width: 160rpx;
+    height: 160rpx;
+    margin: 0 auto;
+    margin-bottom: 36rpx;
+}
+
+.mask .content .cover image {
+    width: 100%;
+    height: 100%;
+}
+
+.mask .content .tit {
+    color: #333333;
+    font-size: 40rpx;
+    font-weight: 600;
+    margin-bottom: 20rpx;
+    text-align: center;
+}
+
+.mask .content .tips {
+    color: #666;
+    font-size: 30rpx;
+    font-weight: 600;
+    margin-bottom: 167rpx;
+    text-align: center;
+}
+
+.mask .content .button {
+    background: #647EFF;
+    outline: none;
+    border: none;
+    border-radius: 20rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    width: 690rpx;
+    color: #fff;
+    font-size: 34rpx;
+    text-align: center;
+    margin: 0 30rpx;
+}
+
+.container .maskBox {
+    width: 100%;
+    height: auto;
+    padding: 0 90rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.container .maskBox .cont-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 48rpx 67rpx;
+    box-sizing: border-box;
+    background: white;
+    border-radius: 20rpx;
+    align-items: center;
+}
+
+.container .maskBox .cont-box h3 {
+    height: 99rpx;
+    font-size: 28rpx;
+    font-family: 'MicrosoftYaHei';
+    color: #333333;
+    line-height: 48rpx;
+}
+
+.container .maskBox .cont-box .input_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1rpx solid #ccc;
+    background: #f2f2f2;
+    padding: 20rpx 0;
+    border-radius: 20rpx;
+    width: 100%;
+}
+
+.container .maskBox .cont-box .input_box input {
+    width: 100%;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 30rpx;
+    font-family: 'MicrosoftYaHei';
+    color: #CCCCCC;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: black;
+}
+
+.container .maskBox .cont-box .button {
+    margin-top: 68rpx;
+    width: 420rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: #647EFF;
+    border-radius: 20rpx;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 32prx;
+    text-align: center;
+}
+
+.wrapper {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    padding-bottom: 230rpx;
+}

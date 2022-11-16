@@ -1,0 +1,4 @@
+<!-- <view class="like-fx active-fx" style="width:{{width}}px;height:{{height}}px;top:{{likeBot?'':likeTop}}rpx;bottom:{{likeBot}}rpx;" wx:if="{{app.globalData.bool}}"></view> -->
+<cover-view wx-if="{{countStatus}}" class="active-fx">
+  <canvas canvas-id="bubble" style="width:{{width}}px;height:{{height}}px;top:{{likeBot?'':likeTop}}rpx;bottom:{{likeBot}}rpx;" class="like-fx"></canvas>
+</cover-view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "warnBox":"../../components/warnBox/warnBox",
+    "like-fx": "/components/likeFx/likeFx"
+  }
+}

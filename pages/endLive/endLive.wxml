@@ -1,0 +1,31 @@
+<view class="end-live">
+
+    <image class="bg-cover" src="{{detailData.liveCoverImg}}"></image>
+
+    <view class="live-title">
+        <image bindtap="goBack" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/back5.png"></image>
+        <view>{{detailData.liveTitle}}</view>
+    </view>
+
+    <view class="header">
+        <view class="title">直播已结束</view>
+        <view class="intro">请耐心等待5-10分钟后查看精彩回放</view>
+    </view>
+    <view class="middle">
+        <view>
+            <view class="num">{{detailData.liveEndTime}}</view>
+            <view class="title">播放时长</view>
+        </view>
+        <view>
+            <view class="num">{{detailData.liveHot}}</view>
+            <view class="title">观看人数</view>
+        </view>
+        <view>
+            <view class="num">{{giftNum}}</view>
+            <view class="title">礼物收获</view>
+        </view>
+    </view>
+    <view class="footer">
+        <view class="text" bindtap="redirect">回首页</view>
+    </view>
+</view>

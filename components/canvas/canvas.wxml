@@ -1,0 +1,30 @@
+<!--components/canvas.wxml-->
+<view class='poster' wx:if="{{canvasType}}" style="width:100%;height: 100vh;background: rgba(0,0,0,0.3);"
+  capture-bind:tap='closePos'>
+  <canvas class='canvas' style='height:{{canvasH}}px;width:{{canvasW}}px;background: rgba(0,0,0,0.3);'
+    canvas-id="mycanvas"></canvas>
+
+  <cover-view class='opt'>
+    <cover-view class='item' style="height: {{bottomH}}px;">
+      <button class='ico' bindtap='saveImg' open-type="openSetting">
+        <cover-image src='../../images/user/down.png'></cover-image>
+      </button>
+      <cover-view class="text">保存到相册</cover-view>
+    </cover-view>
+  </cover-view>
+</view>
+<!-- <view wx:if="{{showModal}}" class="scan-container" catchtap="closeHid">
+  <view class="scan-box">
+    <view class="scan_head" wx-if="{{showModal && !showTab}}">
+      <button class="scan-createcards" open-type="share" hover-class="none" plain="{{false}}">
+        <image src="../../images/user/wechar.png"></image>
+        <text>分享给好友</text>
+      </button>
+      <button class="scan-mycards scan-createcards" catchtap="createNewImg">
+        <image src="../../images/user/photo.png"></image>
+        <text>生成海报</text>
+      </button>
+    </view>
+    <view class="canle">取消 </view>
+  </view>
+</view> -->

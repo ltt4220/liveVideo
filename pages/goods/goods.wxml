@@ -1,0 +1,47 @@
+<view class="goods">
+    <!-- <view class="nav">
+        <view bindtap="onChangeNav" wx:key="index" wx:for="{{navData}}" data-value="{{item.value}}" class="nav-items {{item.value === currentNav ? 'current' : ''}}">
+            {{item.title}}
+        </view>
+    </view> -->
+<!-- 
+    <view class="shopping-list" wx:if="{{currentNav === 1}}">
+        <view class="items {{item.value === currentShopping ? 'current-items' : ''}}" wx:for="{{listData}}" data-value="{{item.value}}" bindtap="onRedirectShopping" wx:key="index">
+            <view class="cover">
+                <image class="img" src="{{item.src}}"></image>
+                <view class="status">
+                    <image class="live-icon" wx:if="{{item.status === 1}}" src="/images/user/live.gif"></image>
+                    <view>{{item.status === 1 ? '讲解中' : '预告'}}</view>
+                </view>
+            </view>
+            <view class="other">
+                <view class="title">{{item.name}}</view>
+                <view class="price-info">
+                    <view class="price">{{item.price}}</view>
+                    <view class="btn">购买</view>
+                </view>
+            </view>
+        </view>
+    </view> -->
+
+    <view class="tickets-list">
+        <view class="items {{item.entityId === currentTickets ? 'current-items' : ''}}" wx:for="{{listData}}" data-id="{{item.entityId}}" bindtap="onRedirectTickets" wx:key="index">
+            <view class="cover">
+                <image class="img" src="{{item.images}}"></image>
+                <view class="status" wx:if="{{item.isRecommend}}">
+                    <image class="live-icon" src="/images/user/live.gif"></image>
+                    <view>讲解中</view>
+                </view>
+            </view>
+            <view class="other">
+                <view class="title">{{item.title}}</view>
+                <view class="date-info">
+                    <view class="date">{{item.startDate}}</view>
+                    <view class="btn" wx:if="{{item.availableCount > 0 || item.activityIsReservation == 1}}">预订</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+</view>

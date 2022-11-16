@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "popBox":"../../components/popBox/popBox",
+    "like-fx": "/components/likeFx/likeFx"
+  },
+  "navigationStyle": "custom"
+}

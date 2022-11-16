@@ -1,0 +1,102 @@
+.search-wrap {
+  padding: 20rpx 0 20rpx 35rpx;
+  display: flex;
+  .inp-box {
+    flex: 1 1 600rpx;
+    height: 70rpx;
+    background-color: #f6f6f6;
+    border-radius: 35rpx;
+    display: flex;
+    align-items: center;
+    .icon {
+      display: block;
+      flex: 0 0 auto;
+      width: 28rpx;
+      height: auto;
+      margin-left: 30rpx;
+    }
+    .inp-txt {
+      flex: 1 1 auto;
+      display: block;
+      height: 70rpx;
+      font-size: 28rpx;
+      color: #333;
+      margin-left: 20rpx;
+    }
+    .input-placeholder {
+      color: #666;
+    }
+    .clear {
+      flex: 0 0 75rpx;
+      height: 70rpx;
+      position: relative;
+      image {
+        display: block;
+        width: 40rpx;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  .cancel {
+    flex: 0 0 115rpx;
+    font-size: 32rpx;
+    color: #333;
+    text-align: right;
+    line-height: 70rpx;
+    height: 70rpx;
+    box-sizing: border-box;
+    padding-right: 35rpx;
+  }
+}
+
+.search-history {
+  padding: 10rpx 35rpx;
+  overflow: hidden;
+}
+.search-history-title {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 44rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 45rpx;
+  .delete {
+    display: block;
+    width: 37rpx;
+    height: 40rpx;
+  }
+}
+.search-history-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -35rpx;
+  .item {
+    position: relative;
+    margin-right: 35rpx;
+    margin-bottom: 50rpx;
+  }
+  .text {
+    font-size: 26rpx;
+    color: #666;
+    line-height: 48rpx;
+    height: 48rpx;
+    padding: 0 32rpx 0 22rpx;
+    background-color: #f6f6f6;
+    border-radius: 24rpx;
+  }
+  .close {
+    display: block;
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    right: -20rpx;
+    top: -20rpx;
+  }
+}
+
+@import '../index/index.scss';

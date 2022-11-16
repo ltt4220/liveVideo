@@ -1,0 +1,42 @@
+<!--pages/login/account/account.wxml-->
+<!--帐号密码登录-->
+<view class="container">
+    <view class="log-base" style="padding-top: 84rpx;">
+        <view class="title">帐号密码登录</view>
+    </view>
+
+    <view class="log-form">
+        <view class="item">
+            <view class="inp-box">
+                <input  class="inp-txt"
+                        type="number"
+                        maxlength="11"
+                        placeholder="请输入您的手机号"
+                        data-key="userName"
+                        value="{{fg.userName}}"
+                        bind:input="textInput" />
+                <view class="close" data-key="userName" bind:tap="clearTextInput"><image mode="widthFix" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/log-close.png" /></view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="inp-box">
+                <input  class="inp-txt"
+                        adjust-position
+                        type="password"
+                        placeholder="请输入您的密码"
+                        data-key="userPwd"
+                        value="{{fg.userPwd}}"
+                        bind:input="textInput" />
+                <view class="close" data-key="userPwd" bind:tap="clearTextInput"><image mode="widthFix" src="https://culturecloud.oss-cn-hangzhou.aliyuncs.com/liveMinI/log-close.png" /></view>
+            </view>
+        </view>
+        <view class="btn-item">
+            <button class="log-btn" bind:tap="save">登录</button>
+        </view>
+        <view class="way-item">
+            <navigator class="w-col"  url="../index/index" open-type="redirect">微信登录</navigator>
+            <!-- <button class="w-col" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信登录</button> -->
+            <navigator class="w-col"  url="../sms/sms" open-type="redirect">短信验证码登录</navigator>
+        </view>
+    </view>
+</view>

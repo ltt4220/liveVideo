@@ -1,0 +1,235 @@
+.log-base {
+  padding: 110rpx 0 1rpx 0;
+}
+
+.log-base .logo {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.log-base .logo .cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.log-base .huan {
+  font-size: 56rpx;
+  color: #333;
+  text-align: center;
+  line-height: 74rpx;
+  margin-top: 35rpx;
+}
+
+.log-base .xyzc {
+  font-size: 24rpx;
+  color: #666;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 15rpx;
+}
+
+.log-base .xyzc navigator {
+  display: inline;
+  color: #647eff;
+}
+
+.log-base .title {
+  font-size: 56rpx;
+  color: #333;
+  line-height: 74rpx;
+  padding: 0 68rpx;
+}
+
+.log-way-list {
+  padding: 85rpx 0 1rpx 0;
+}
+
+.log-way-list .item {
+  width: 640rpx;
+  height: 90rpx;
+  font-size: 34rpx;
+  color: #666;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 2rpx solid #ccc;
+  border-radius: 20rpx;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin: 0 auto 25rpx auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.log-way-list .wx-item {
+  color: #fff;
+  border-color: #647eff;
+  background-color: #647eff;
+}
+
+.log-way-list .wx-item .icon {
+  display: block;
+  width: 42rpx;
+  height: auto;
+  margin-right: 22rpx;
+}
+
+.log-form {
+  padding: 40rpx 0 1rpx 0;
+}
+
+.log-form .item {
+  width: 600rpx;
+  position: relative;
+  margin: 0 auto 30rpx auto;
+  border-bottom: 2rpx solid #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.log-form .inp-box {
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.log-form .inp-txt {
+  display: block;
+  width: 100%;
+  font-size: 34rpx;
+  color: #333;
+  height: 108rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 10rpx;
+  border: none;
+  outline: none;
+}
+
+.log-form .input-placeholder {
+  color: #ccc;
+}
+
+.log-form .close {
+  width: 50rpx;
+  height: 110rpx;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+}
+
+.log-form .close image {
+  width: 22rpx;
+  height: auto;
+}
+
+.log-form .yanzm {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 240rpx;
+  height: 72rpx;
+  margin-left: 20rpx;
+  font-size: 34rpx;
+  color: #fff;
+  background-color: #647eff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: none;
+  border-radius: 20rpx;
+  cursor: pointer;
+  outline: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.log-form .btn-item {
+  width: 640rpx;
+  margin: 100rpx auto 40rpx auto;
+}
+
+.log-form .log-btn {
+  display: block;
+  width: 100%;
+  height: 90rpx;
+  font-size: 34rpx;
+  color: #fff;
+  background: #647eff;
+  border: 2rpx solid #647eff;
+  border-radius: 20rpx;
+  outline: none;
+}
+
+.log-form .way-item {
+  width: 600rpx;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.log-form .way-item .w-col {
+  font-size: 30rpx;
+  color: #666;
+  line-height: 46rpx;
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+  margin: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}

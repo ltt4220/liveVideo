@@ -1,0 +1,6 @@
+.like-fx {
+  position: absolute;
+  right: 0;
+  pointer-events: none;
+  z-index: 4;
+}

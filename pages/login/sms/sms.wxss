@@ -1,0 +1,2 @@
+/* pages/login/sms/sms.wxss */
+@import '../index/index.wxss';
